@@ -104,7 +104,6 @@ export default function App() {
   const prev = () =>
     setActive((s) => (s - 1 + projectsSample.length) % projectsSample.length);
 
-  // theme helper classes
   const pageBg = dark
     ? "bg-[#071020] text-white"
     : "bg-white text-[#041428]";
@@ -147,110 +146,92 @@ export default function App() {
         </svg>
       </div>
 
-      {/* Navbar */}
-      <header className="fixed top-6 left-6 right-6 z-40 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-violet-400 flex items-center justify-center shadow-lg">
-            <span className="font-bold text-sm">DP</span>
-          </div>
-          <div className="hidden sm:block">
-            <div
-              className={`text-sm ${
-                dark ? "text-white" : "text-[#041428]"
-              }`}
-            >
-              Dharanidharan P
-            </div>
-            <div
-              className={`text-xs ${
-                dark ? "text-gray-400" : "text-gray-600"
-              }`}
-            >
-              Full-Stack Developer
-            </div>
-          </div>
-        </div>
+{/* Navbar */}
+<header
+  className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 transition-colors duration-300
+    ${dark ? "bg-[#071020]/90 text-white backdrop-blur-md shadow-md" : "bg-white/90 text-[#041428] backdrop-blur-md shadow-md"}
+  `}
+>
+  <div className="flex items-center gap-4">
+    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-violet-400 flex items-center justify-center shadow-lg">
+      <span className="font-bold text-sm">DP</span>
+    </div>
+    <div className="hidden sm:block">
+      <div className="text-sm font-semibold">{dark ? "Dharanidharan P" : "Dharanidharan P"}</div>
+      <div className={`text-xs ${dark ? "text-gray-400" : "text-gray-500"}`}>Full-Stack Developer</div>
+    </div>
+  </div>
 
-        <div className="flex items-center gap-4">
-          <nav
-            className={`hidden md:flex gap-6 text-sm ${
-              dark ? "text-gray-200" : "text-gray-600"
-            }`}
-          >
-            <a href="#about" className="hover:text-cyan-400 transition">
-              About
-            </a>
-            <a href="#projects" className="hover:text-cyan-400 transition">
-              Projects
-            </a>
-            <a href="#skills" className="hover:text-cyan-400 transition">
-              Skills
-            </a>
-            <a href="#education" className="hover:text-cyan-400 transition">
-              Education
-            </a>
-            <a href="#certs" className="hover:text-cyan-400 transition">
-              Certificates
-            </a>
-            <a href="#contact" className="hover:text-cyan-400 transition">
-              Contact
-            </a>
-          </nav>
-          <button
-            onClick={toggle}
-            className="p-2 rounded-md bg-white/5 backdrop-blur-md hover:bg-white/10 transition"
-          >
-            {dark ? <FaMoon /> : <FaSun className="text-yellow-500" />}
-          </button>
-        </div>
-      </header>
-
-      {/* Profile picture */}
-      <div className="fixed top-40 right-21 z-30">
-        <div
-          className={`rounded-full overflow-hidden border-4 ${
-            dark ? "border-cyan-500" : "border-cyan-500"
-          } shadow-xl w-50 h-50`}
+  <div className="flex items-center gap-4">
+    <nav className={`hidden md:flex gap-6 text-sm transition-colors duration-300`}>
+      {["About","Projects","Skills","Education","Certificates","Contact"].map((link) => (
+        <a
+          key={link}
+          href={`#${link.toLowerCase()}`}
+          className={`hover:text-cyan-400 transition-colors duration-200 ${dark ? "text-gray-200" : "text-gray-600"}`}
         >
-          <img
-            src={profilePic}
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
+          {link}
+        </a>
+      ))}
+    </nav>
 
-      <main className="pt-32 pb-24 px-6 md:px-12">
+    <button
+      onClick={toggle}
+      className={`p-2 rounded-md transition-colors duration-300
+        ${dark ? "bg-white/5 hover:bg-white/10" : "bg-gray-100 hover:bg-gray-200"}`}
+    >
+      {dark ? <FaMoon /> : <FaSun className="text-yellow-500" />}
+    </button>
+  </div>
+</header>
+
+
+      <main className="pt-24 pb-24 px-6 md:px-12">
         {/* About + Projects */}
         <section id="about" className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* About */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative"
+    initial={{ opacity: 0, x: -30 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+    className="flex flex-col md:flex-row items-center md:items-start gap-6"
+  >
+    {/* Profile Pic */}
+    {/* Intro Text */}
+    <div className={`rounded-2xl overflow-hidden border backdrop-blur-lg bg-gradient-to-br from-white/2 to-transparent shadow-2xl transition-colors flex-1 ${cardBase}`}>
+          <div className="md:w-40 md:h-40 absolute md:top-6 md:right-6 rounded-full overflow-hidden border-4 border-cyan-500 shadow-xl flex-shrink-0">
+      <img
+        src={profilePic}
+        alt="Profile"
+        className="w-full h-full object-cover"
+      />
+    </div>
+      <div className="p-6 md:p-14 pt-24 md:pt-28 text-center md:text-left">
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Hey,</h1>
+        <h1 className="text-4xl md:text-6xl text-cyan-300 font-extrabold tracking-tight">I'm Dharani</h1>
+
+        <p className={`mt-4 md:mt-6 leading-relaxed text-sm md:text-base transition-colors ${subtleText}`}>
+          A passionate and driven Software Engineer specializing in React and expanding into full-stack development. With hands-on experience building scalable, responsive web applications and integrating both SQL and NoSQL databases, I thrive in agile environments where clean code and user-centric design matter.
+        </p>
+
+        <div className="mt-6 flex justify-center md:justify-start gap-3 flex-wrap">
+          <a
+            href="/Dharanidharan_Resume.pdf"
+            className="px-4 py-2 rounded-full border border-cyan-400 text-cyan-300 
+                      bg-transparent hover:bg-cyan-400 hover:text-black transition-colors duration-300"
           >
-            <div className={`rounded-2xl overflow-hidden border backdrop-blur-lg bg-gradient-to-br from-white/2 to-transparent shadow-2xl transition-colors ${cardBase}`}>
-              <div className="p-10 md:p-16">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">Hey,</h1>
-                <h1 className="text-4xl md:text-6xl text-cyan-300 font-extrabold tracking-tight">I'm Dharani</h1>
+            Download Resume
+          </a>
+        </div>
 
-                <p className={`mt-6 leading-relaxed text-sm md:text-base transition-colors ${subtleText}`}>
-                  A passionate and driven Software Engineer specializing in React and expanding into full-stack development. With hands-on experience building scalable, responsive web applications and integrating both SQL and NoSQL databases, I thrive in agile environments where clean code and user-centric design matter.
-                </p>
-
-                <div className="mt-11 flex gap-3 flex-wrap">
-                  <a href="/Dharanidharan_Resume.pdf" className="px-4 py-2 rounded-full border border-cyan-400 text-cyan-300">Download Resume</a>
-                </div>
-
-                <div className="mt-9 flex gap-4 items-center">
-                  <a className={`p-2 rounded-full ${dark ? "bg-white/5" : "bg-gray-100"}`} href="https://github.com/dharanidharanp27"><FaGithub /></a>
-                  <a className={`p-2 rounded-full ${dark ? "bg-white/5" : "bg-gray-100"}`} href="https://www.linkedin.com/in/dharani-dharan-aa6553229"><FaLinkedin /></a>
-                  <a className={`p-2 rounded-full ${dark ? "bg-white/5" : "bg-gray-100"}`} href="mailto:dharanidharanp27@gmail.com"><FaEnvelope /></a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        <div className="mt-4 md:mt-6 flex justify-center md:justify-start gap-4 items-center text-xl">
+          <a className={`p-2 rounded-full hover:text-cyan-400 ${dark ? "bg-white/5" : "bg-gray-100"}`} href="https://github.com/dharanidharanp27" ><FaGithub /></a>
+          <a className={`p-2 rounded-full hover:text-cyan-400 ${dark ? "bg-white/5" : "bg-gray-100"}`} href="https://www.linkedin.com/in/dharanidharan-p-aa6553229/"><FaLinkedin /></a>
+          <a className={`p-2 rounded-full hover:text-cyan-400 ${dark ? "bg-white/5" : "bg-gray-100"}`} href="mailto:dharanidharanp27@gmail.com"><FaEnvelope /></a>
+        </div>
+      </div>
+    </div>
+  </motion.div>
 
           {/* Projects */}
           <motion.div
@@ -265,7 +246,6 @@ export default function App() {
                 <h2 className="text-3xl md:text-4xl font-extrabold text-cyan-300">PROJECTS</h2>
                 <p className={`text-sm mt-2 transition-colors ${subtleText}`}>Some of my highlighted works. Click a card to open the repo.</p>
 
-                {/* Carousel */}
                 <div className="mt-8 relative">
                   <div className="flex items-center justify-between">
                     <button onClick={prev} className="p-2 rounded-full bg-white/5 hover:bg-white/10">◀</button>
@@ -293,7 +273,6 @@ export default function App() {
                     <button onClick={next} className="p-2 rounded-full bg-white/5 hover:bg-white/10">▶</button>
                   </div>
 
-                  {/* dots */}
                   <div className="flex gap-2 justify-center mt-6">
                     {projectsSample.map((_, i) => (
                       <button key={i} onClick={() => setActive(i)} className={`w-3 h-3 rounded-full ${i === active ? "bg-cyan-400" : "bg-white/20"}`}></button>
@@ -322,7 +301,6 @@ export default function App() {
                       {cat.replaceAll("_", " ")}
                     </h3>
 
-                    {/* Expanded content */}
                     <div
                       className={`grid transition-all duration-500 ${
                         isOpen ? "grid-rows-[1fr] mt-4" : "grid-rows-[0fr]"
@@ -350,61 +328,61 @@ export default function App() {
           </div>
         </section>
 
-                {/* Education Section */}
-                <section id="education" className="max-w-6xl mx-auto mt-16">
-                  <h2 className="text-3xl font-bold text-cyan-300 mb-8">Education</h2>
-                  <div className="grid gap-6 md:grid-cols-3">
-                    {education.map((edu, i) => (
-                      <div key={i} className={`rounded-xl border p-6 hover:scale-105 hover:shadow-lg transition ${cardBase}`}>
-                        <h3 className={`text-lg font-semibold ${dark ? "text-white" : "text-[#041428]"}`}>{edu.discipline}</h3>
-                        <p className={`text-sm ${dark ? "text-gray-300" : "text-gray-600"}`}>{edu.school}</p>
-                        <p className={`text-sm ${dark ? "text-gray-300" : "text-gray-600"}`}>{edu.year}</p>
-                        <p className="text-cyan-300 font-medium">{edu.grade}</p>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-        
-                {/* Certificates Section */}
-                <section id="certs" className="max-w-6xl mx-auto mt-16">
-                  <h2 className="text-3xl font-bold text-cyan-300 mb-8">Certificates</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {certificates.map((c, i) => (
-                      <div
-                        key={i}
-                        onClick={() => setPreview(c.image)}
-                        className={`rounded-xl border overflow-hidden cursor-pointer hover:scale-105 hover:shadow-lg transition ${cardBase}`}
-                      >
-                        <img src={c.image} alt={c.title} className="w-full h-60 object-cover" />
-                        <div className={`p-4 ${dark ? "bg-transparent" : "bg-gray-50"}`}>
-                          <p className={`${dark ? "text-gray-300" : "text-gray-700"} text-sm`}>{c.title}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-        
-                {/* Contact Section */}
-                <section id="contact" className="max-w-6xl mx-auto mt-16">
-                  <div className={`rounded-2xl border backdrop-blur-lg bg-gradient-to-br from-white/2 to-transparent shadow-2xl p-8 transition-colors ${cardBase}`}>
-                    <h2 className="text-3xl font-bold text-cyan-300 mb-6">Contact</h2>
-                    <div className="flex flex-col md:flex-row justify-between gap-6 items-center">
-                      <div className={`${dark ? "text-gray-300" : "text-gray-700"}`}>
-                        <p>Email: <a href="mailto:dharanidharanp27@gmail.com" className="hover:text-cyan-400">dharanidharanp27@gmail.com</a></p>
-                        <p>Phone: <a href="tel:+919363661266" className="hover:text-cyan-400">+91 9363661266</a></p>
-                      </div>
-                      <div className="flex gap-4 text-xl">
-                        <a href="https://github.com/dharanidharanp27" className="hover:text-cyan-400"><FaGithub /></a>
-                        <a href="https://www.linkedin.com/in/dharani-dharan-aa6553229" className="hover:text-cyan-400"><FaLinkedin /></a>
-                        <a href="https://www.instagram.com/dharani_de_dharan/" className="hover:text-cyan-400"><FaInstagram /></a>
-                        <a href="https://x.com/DHARANI14890421" className="hover:text-cyan-400"><FaTwitter /></a>
-                        <a href="mailto:dharanidharanp27@gmail.com" className="hover:text-cyan-400"><FaEnvelope /></a>
-                        <a href="tel:+919363661266" className="hover:text-cyan-400"><FaPhone /></a>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </main>
+        {/* Education Section */}
+        <section id="education" className="max-w-6xl mx-auto mt-16">
+          <h2 className="text-3xl font-bold text-cyan-300 mb-8">Education</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {education.map((edu, i) => (
+              <div key={i} className={`rounded-xl border p-6 hover:scale-105 hover:shadow-lg transition ${cardBase}`}>
+                <h3 className={`text-lg font-semibold ${dark ? "text-white" : "text-[#041428]"}`}>{edu.discipline}</h3>
+                <p className={`text-sm ${dark ? "text-gray-300" : "text-gray-600"}`}>{edu.school}</p>
+                <p className={`text-sm ${dark ? "text-gray-300" : "text-gray-600"}`}>{edu.year}</p>
+                <p className="text-cyan-300 font-medium">{edu.grade}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Certificates Section */}
+        <section id="certs" className="max-w-6xl mx-auto mt-16">
+          <h2 className="text-3xl font-bold text-cyan-300 mb-8">Certificates</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {certificates.map((c, i) => (
+              <div
+                key={i}
+                onClick={() => setPreview(c.image)}
+                className={`rounded-xl border overflow-hidden cursor-pointer hover:scale-105 hover:shadow-lg transition ${cardBase}`}
+              >
+                <img src={c.image} alt={c.title} className="w-full h-60 object-cover" />
+                <div className={`p-4 ${dark ? "bg-transparent" : "bg-gray-50"}`}>
+                  <p className={`${dark ? "text-gray-300" : "text-gray-700"} text-sm`}>{c.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="max-w-6xl mx-auto mt-16">
+          <div className={`rounded-2xl border backdrop-blur-lg bg-gradient-to-br from-white/2 to-transparent shadow-2xl p-8 transition-colors ${cardBase}`}>
+            <h2 className="text-3xl font-bold text-cyan-300 mb-6">Contact</h2>
+            <div className="flex flex-col md:flex-row justify-between gap-6 items-center">
+              <div className={`${dark ? "text-gray-300" : "text-gray-700"}`}>
+                <p>Email: <a href="mailto:dharanidharanp27@gmail.com" className="hover:text-cyan-400">dharanidharanp27@gmail.com</a></p>
+                <p>Phone: <a href="tel:+919363661266" className="hover:text-cyan-400">+91 9363661266</a></p>
+              </div>
+              <div className="flex gap-4 text-xl">
+                <a href="https://github.com/dharanidharanp27" className="hover:text-cyan-400"><FaGithub /></a>
+                <a href="https://www.linkedin.com/in/dharanidharan-p-aa6553229/" className="hover:text-cyan-400"><FaLinkedin /></a>
+                <a href="https://www.instagram.com/dharani_de_dharan/" className="hover:text-cyan-400"><FaInstagram /></a>
+                <a href="https://x.com/DHARANI14890421" className="hover:text-cyan-400"><FaTwitter /></a>
+                <a href="mailto:dharanidharanp27@gmail.com" className="hover:text-cyan-400"><FaEnvelope /></a>
+                <a href="tel:+919363661266" className="hover:text-cyan-400"><FaPhone /></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <footer className="py-5 text-center text-gray-400">
         © {new Date().getFullYear()} Dharanidharan P
