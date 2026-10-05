@@ -17,7 +17,7 @@ import cert3 from "./assets/cert3.jpg";
 import cert4 from "./assets/cert4.jpg";
 import cert5 from "./assets/cert5.jpg";
 
-import pro1 from "./assets/web.jpg";
+import pro1 from "./assets/urbanwear.jpg";
 import pro2 from "./assets/driver.jpg";
 import pro3 from "./assets/traffic.jpg";
 
@@ -26,10 +26,10 @@ import profilePic from "./assets/profile.jpg";
 // Sample projects
 const projectsSample = [
   {
-    title: "E-commerce Website",
-    subtitle: "MERN stack",
+    title: "UrbanWear E-commerce",
+    subtitle: "React | Flask | MySQL",
     image: pro1,
-    link: "https://github.com/Dharanidharanp27/Websites",
+    link: "https://urbanwear-frontend.onrender.com/",
   },
   {
     title: "Traffic Sign Classifier",
@@ -198,15 +198,15 @@ export default function App() {
   >
     {/* Profile Pic */}
     {/* Intro Text */}
-    <div className={`rounded-2xl overflow-hidden border backdrop-blur-lg bg-gradient-to-br from-white/2 to-transparent shadow-2xl transition-colors flex-1 ${cardBase}`}>
-          <div className="md:w-40 md:h-40 absolute md:top-6 md:right-6 rounded-full overflow-hidden border-4 border-cyan-500 shadow-xl flex-shrink-0">
+    <div className={`relative rounded-2xl overflow-hidden border backdrop-blur-lg bg-gradient-to-br from-white/2 to-transparent shadow-2xl transition-colors flex-1 ${cardBase}`}>
+                   <div className="w-32 h-32 mx-auto mt-8 md:mt-0 md:absolute md:top-6 md:right-6 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-cyan-500 shadow-xl">
       <img
         src={profilePic}
         alt="Profile"
-        className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
       />
     </div>
-      <div className="p-6 md:p-14 pt-24 md:pt-28 text-center md:text-left">
+            <div className="p-6 md:p-14 pt-6 md:pt-28 text-center md:text-left">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Hey,</h1>
         <h1 className="text-4xl md:text-6xl text-cyan-300 font-extrabold tracking-tight">I'm Dharani</h1>
 
