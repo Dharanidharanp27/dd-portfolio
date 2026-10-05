@@ -61,7 +61,7 @@ const education = [
     discipline: "B.E. Computer Science and Engineering",
     school: "Saranathan College of Engineering",
     year: "2021 - 2025",
-    grade: "7.8 CGPA",
+    grade: "7.82 CGPA",
   },
   {
     discipline: "HSC - Class 12th",
