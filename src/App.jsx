@@ -17,7 +17,7 @@ import cert3 from "./assets/cert3.jpg";
 import cert4 from "./assets/cert4.jpg";
 import cert5 from "./assets/cert5.jpg";
 
-import pro1 from "./assets/urbanwear.jpg";
+import pro1 from "./assets/urbanwear.png";
 import pro2 from "./assets/driver.jpg";
 import pro3 from "./assets/traffic.jpg";
 
